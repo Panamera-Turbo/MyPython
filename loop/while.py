@@ -32,3 +32,4 @@ while active:
 print('-----------------------------')
 #break退出循环
 #continue继续下一次循环
+#类似于C语言
