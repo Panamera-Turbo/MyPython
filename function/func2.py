@@ -1,4 +1,3 @@
-
 def setPrice(things,price):
     things['price']=price
 
