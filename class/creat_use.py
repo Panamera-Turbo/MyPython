@@ -1,10 +1,11 @@
 #创建一个类
 class car():
-    '一个类，描述车的品牌和速度'#帮助文档，__doc__读取
+    '一个类，描述车的品牌和速度'    #帮助文档，__doc__读取
 
     def __init__(self, brand, speed):
         #self 代表类的实例，self 在定义类的方法时是必须有的，虽然在调用时不必传入相应的参数。
         #__init__()是一种特殊的方法，被称为类的构造函数或初始化方法，当创建了这个类的实例时就会调用该方法
+        
         #初始化brand和speed
         self.brand = brand
         self.speed = speed
@@ -27,7 +28,7 @@ MyCar.start()
 
 #给属性指定默认值
 class car_1():
-    '一个类，描述车的品牌和速度'#帮助文档，__doc__读取
+    '一个类，描述车的品牌,速度和油耗'#帮助文档，__doc__读取
 
     def __init__(self, brand, speed, gas):
         #self 代表类的实例，self 在定义类的方法时是必须有的，虽然在调用时不必传入相应的参数。
@@ -40,7 +41,8 @@ class car_1():
 
     def getGas(self):
         print(self.brand.title(), 'has used', str(self.gas)+'L gas')
-MyCar_1 = car_1('posche', 350, 95)
+
+MyCar_1 = car_1('porsche', 350, 95)
 print(MyCar_1.brand.title(), 'has ran', MyCar_1.odometer, 'miles in total')
 MyCar_1.getGas()
 
