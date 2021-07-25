@@ -1,28 +1,38 @@
 from typing import List
-class Solution:
-    def maxSubArray(self, nums: List[int]) -> int:
-        max_sum = nums[0]
-        n = len(nums)
-        former_sum = 0
-        for i in range(0, n):
-            former_sum = max(former_sum + nums[i], nums[i])
-            max_sum = max(max_sum, former_sum)
 
-        return max_sum
+class Solution(object):
+    def maxSubarraySumCircular(self, A):
+        N = len(A)
 
-    def maxSubarraySumCircular(self, nums: List[int]) -> int:
-        n = len(nums)
-        temp_nums = nums
-        # print(temp_nums)
-        max_sum = self.maxSubArray(nums)
-        for i in range(0, n):
-            x = temp_nums.pop(0)
-            temp_nums.append(x)
-            max_sum = max(max_sum, self.maxSubArray(temp_nums))
+        ans = nums[0]
+        cur = 0
+        for x in A:
+            cur = x + max(cur, 0)
+            ans = max(ans, cur)
 
-                
+        # ans is the answer for 1-interval subarrays.
+        # Now, let's consider all 2-interval subarrays.
+        # For each i, we want to know
+        # the maximum of sum(A[j:]) with j >= i+2
 
-        return max_sum
+        # rightsums[i] = sum(A[i:])
+        rightsums = [None] * N
+        rightsums[-1] = A[-1]
+        for i in range(N-2, -1, -1):
+            rightsums[i] = rightsums[i+1] + A[i]
+
+        # maxright[i] = max_{j >= i} rightsums[j]
+        maxright = [None] * N
+        maxright[-1] = rightsums[-1]
+        for i in range(N-2, -1, -1):
+            maxright[i] = max(maxright[i+1], rightsums[i])
+
+        leftsum = 0
+        for i in range(N-2):
+            leftsum += A[i]
+            ans = max(ans, leftsum + maxright[i+2])
+        return ans
+
 
 nums = [3,-1,2,-1]
 a = Solution()
