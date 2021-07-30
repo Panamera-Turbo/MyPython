@@ -3,16 +3,14 @@
 # @return an integer
 # def isBadVersion(version):
 
-
+START_BAD_VERSION = 2
+def isBadVersion(n:int) -> bool:
+    return n >= START_BAD_VERSION
+        
+    
 
 class Solution:
-    def tryBad(self,n,m):
-        if isBadVersion(n) == True & isBadVersion(m) == False:
-            return 1
-        elif isBadVersion(m):
-            return 0
-        else :
-            return -1
+    
 
     def firstBadVersion(self, n):
         """
