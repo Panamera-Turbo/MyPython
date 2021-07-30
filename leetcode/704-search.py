@@ -5,20 +5,27 @@ class Solution:
         n = len(nums)
         head = 0
         tail = n - 1
-        i = tail + (int)((head - tail) / 2)
-        while head < tail:
+        i = (int)((head + tail) / 2)
+
+        while head < tail - 1:
             if nums[i] == target:
                 return i
+            
             elif nums[i] > target:
-                tail = i
-                i = tail + (int)((head - tail) / 2)
+                tail = i - 1
+                i = (int)((head + tail) / 2)
             else :
-                head = i
-                i = tail + (int)((head - tail) / 2)
+                head = i + 1
+                i = (int)((head + tail) / 2)
         
-        return -1
+        if nums[head] == target:
+            return head
+        elif nums[tail] == target:
+            return tail
+        else:
+            return -1
 
 a = Solution()
-nums = [-1,0,3,5,9,12]
-target = 2
+nums = [0]
+target = 0
 print(a.search(nums, target))
