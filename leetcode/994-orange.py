@@ -7,7 +7,9 @@ class Solution:
 
         length = len(grid)
         width = len(grid[0])
-        count = 0
+        # count = 0
+
+        
 
         return minute
 
