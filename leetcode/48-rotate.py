@@ -8,18 +8,25 @@ class Solution:
         """
         n = len(matrix)
         # print(n)
-
-        for i in range(n):
-            for j in range(n):
-                if i == j:
-                    continue
-                matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
-        
         # print(matrix)
 
         for i in range(n):
-            for j in range(n):
-                matrix[i][j], matrix[i][n - j - 1] = matrix[i][n - j - 1], matrix[i][j]
+            for j in range(i+1,n):
+                if i == j:
+                    continue
+                t = matrix[j][i]
+                matrix[j][i] = matrix[i][j]
+                matrix[i][j] = t
+        
+        # print(matrix)
+        k = (int)(n / 2)
+        for i in range(n):
+            for j in range(k):
+                # print(i, j)
+                x = matrix[i][j]
+                matrix[i][j] = matrix[i][-j-1]
+                matrix[i][-j-1] = x
+                # print(x)
 
 a = Solution()
 b = [[1,2,3],[4,5,6],[7,8,9]]
